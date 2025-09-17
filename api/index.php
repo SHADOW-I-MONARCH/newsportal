@@ -1,58 +1,18 @@
 <?php
 
-// Get the requested path from the URL
+// --- DEBUGGING SCRIPT ---
+
+// Set the content type to plain text for clean output
+header('Content-Type: text/plain');
+
+echo "--- VERCEL PHP ROUTER DEBUG --- \n\n";
+
+// This is the most important line. It shows us the path Vercel is sending.
 $request_uri = explode('?', $_SERVER['REQUEST_URI'], 2)[0];
+echo "Request URI Detected: " . $request_uri . "\n\n";
 
-// Define the path to your project files (one level up from the 'api' folder)
-$project_root = __DIR__ . '/../';
+echo "--- Full \$_SERVER superglobal --- \n";
+// This will print all available server variables for more context.
+print_r($_SERVER);
 
-// Simple routing logic
-switch ($request_uri) {
-    case '/':
-    case '/login.html':
-        require $project_root . 'login.html';
-        break;
-        
-    case '/register.html':
-        require $project_root . 'register.html';
-        break;
-        
-    case '/homepage.php':
-        require $project_root . 'homepage.php';
-        break;
-
-    case '/article.php':
-        require $project_root . 'article.php';
-        break;
-        
-    case '/login.php':
-        require $project_root . 'login.php';
-        break;
-
-    case '/logout.php':
-        require $project_root . 'logout.php';
-        break;
-        
-    // Serve static files like CSS and images
-    case '/style.css':
-        header('Content-Type: text/css');
-        readfile($project_root . 'style.css');
-        break;
-        
-    case '/style2.css':
-        header('Content-Type: text/css');
-        readfile($project_root . 'style2.css');
-        break;
-        
-    case '/news.jpg':
-        header('Content-Type: image/jpeg');
-        readfile($project_root . 'news.jpg');
-        break;
-        
-    default:
-        // Handle 404 Not Found
-        http_response_code(404);
-        echo '<h1>404 Not Found</h1>';
-        echo 'The page you requested could not be found.';
-        break;
-}
+?>
