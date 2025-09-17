@@ -19,7 +19,10 @@ if (!isset($_SESSION['username'])) {
 <body>
     <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
 <p>Your role: <?php echo $_SESSION['role']; ?></p>
-
+<?php
+// Vercel-compatible session handling
+ini_set('session.save_path', '/tmp');
+?>
 <a href="logout.php">Logout</a>
 
     <div class="container">
@@ -34,3 +37,4 @@ if (!isset($_SESSION['username'])) {
     </div>
 </body>
 </html>
+
