@@ -1,0 +1,17 @@
+# wasmer.toml
+
+# Define the package that will run our app
+[package]
+name = "your-username/newsportal"  # Choose a unique name
+version = "0.1.0"
+description = "A news portal application"
+
+# Define the dependencies
+[dependencies]
+# Use a community package that provides a PHP-CGI server in Wasm
+"sharrq/php-cgi" = "8.2.13"
+
+# Tell the PHP package what to do
+[fs]
+# Map your entire project directory to the "/app" directory inside the container
+"/" = "./"
