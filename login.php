@@ -14,4 +14,7 @@ if ($username === "admin" && $password === "1234" && $role === "admin") {
 } else {
     echo "<script>alert('Invalid credentials!'); window.location.href='login.html';</script>";
 }
+// Vercel-compatible session handling
+ini_set('session.save_path', '/tmp');
 ?>
+
